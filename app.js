@@ -53,6 +53,13 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use((req, res, next) => {
+  console.log("req.session:", req.session);
+  // populating req.user from db using deserialize user function
+  console.log("req.user:", req.user);
+  next();
+});
+
 /**
  * -------------- ROUTES ----------------
  */
